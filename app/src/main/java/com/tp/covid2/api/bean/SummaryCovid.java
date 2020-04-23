@@ -20,20 +20,22 @@ package com.tp.covid2.api.bean;
 import com.tp.covid2.api.bean.dayone.Countries;
 import com.tp.covid2.api.bean.dayone.Global;
 
+import java.util.ArrayList;
+
 public class SummaryCovid {
 
     private Global Global;
 
-    private Countries[] Countries;
+    private ArrayList<Countries> Countries;
 
     private String Date;
 
-    public Countries[] getCountries ()
+    public ArrayList<Countries> getCountries ()
     {
         return Countries;
     }
 
-    public void setCountries (Countries[] Countries)
+    public void setCountries (ArrayList<Countries> Countries)
     {
         this.Countries = Countries;
     }

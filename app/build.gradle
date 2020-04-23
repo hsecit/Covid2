@@ -39,4 +39,5 @@ dependencies {
     implementation 'com.appunity.retrofit2:adapter-guava:2.0.2'
     implementation 'com.appunity.retrofit2:converter-gson:2.0.2'
     implementation 'co.roverlabs:picasso:2.5.2'
+    implementation 'com.google.android.gms:play-services-maps:17.0.0'
 }

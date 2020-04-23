@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/show_modal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="2dp">
 
     <RelativeLayout
+        android:id="@+id/show_modal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
-            android:layout_marginLeft="5dp"
             android:id="@+id/flag_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
 
             app:srcCompat="@android:drawable/ic_lock_lock" />
@@ -25,26 +27,28 @@
             android:layout_toRightOf="@+id/flag_view"
 
 
-            android:textStyle="bold"
-            android:text="Morocco" />
+            android:text="Morocco"
+            android:textStyle="bold" />
+
         <TextView
+            android:id="@+id/num_case"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="47467"
-            android:id="@+id/num_case"
-            android:layout_toEndOf="@+id/flag_view"
             android:layout_below="@+id/nom"
             android:layout_marginRight="15dp"
-            android:layout_toRightOf="@+id/flag_view" />
+            android:layout_toEndOf="@+id/flag_view"
+            android:layout_toRightOf="@+id/flag_view"
+            android:text="47467" />
+
         <TextView
             android:id="@+id/num_death"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/num_case"
-            android:layout_toRightOf="@+id/num_case"
             android:layout_below="@+id/nom"
             android:layout_marginRight="15dp"
-            android:text="7475447"/>
+            android:layout_toEndOf="@+id/num_case"
+            android:layout_toRightOf="@+id/num_case"
+            android:text="7475447" />
 
         <TextView
             android:id="@+id/num_recovered"

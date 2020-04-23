@@ -17,18 +17,24 @@ import com.tp.covid2.R;
 import com.tp.covid2.api.bean.dayone.Countries;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
-public class CountrieAdapter extends RecyclerView.Adapter<CountrieAdapter.ViewHolder>  {
+public class CountrieAdapter extends RecyclerView.Adapter<CountrieAdapter.ViewHolder> implements Filterable  {
     Context context;
-    Countries[] countries;
+    ArrayList<Countries> countries;
     ArrayList<Countries> countries_origin;
 
-    public CountrieAdapter(Context context , Countries[] countries){
+    public CountrieAdapter(Context context , ArrayList<Countries> countries){
         this.context = context;
         this.countries = countries;
+        this.countries_origin = new ArrayList<Countries>(countries);
+    }
+
+    public CountrieAdapter() {
 
     }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -39,20 +45,53 @@ public class CountrieAdapter extends RecyclerView.Adapter<CountrieAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.AfficherView(countries[position]);
+        holder.AfficherView(countries.get(position));
     }
-
-
-
 
 
     @Override
     public int getItemCount() {
-        return countries.length;
+        return countries.size();
+    }
+//// filter section
+    @Override
+    public Filter getFilter() {
+        return filter;
     }
 
+    private Filter filter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
 
+            ArrayList<Countries> FilterList =  new ArrayList<Countries>();
+            String filterPattern = constraint.toString().toLowerCase().trim();
+            if (constraint == null || constraint.length()==0){
+                FilterList.addAll(countries_origin);
 
+            }else {
+                for (Countries  c : countries_origin ){
+                    if (c.getCountry().contains(filterPattern)){
+                        FilterList.add(c);
+                    }
+                }
+            }
+
+            FilterResults results = new FilterResults();
+            results.values = FilterList;
+
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+
+            countries.clear();
+            countries.addAll((List) results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+//////
     class ViewHolder extends RecyclerView.ViewHolder {
         ImageView flag_view;
         TextView nom ;

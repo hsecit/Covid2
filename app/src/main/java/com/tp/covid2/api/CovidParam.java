@@ -3,9 +3,12 @@ package com.tp.covid2.api;
 import android.content.Context;
 import android.content.pm.LabeledIntent;
 import android.util.Log;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tp.covid2.api.bean.CountriesNames;
@@ -78,7 +81,7 @@ public class CovidParam {
 
     }
     //// for the adapter module
-    public void getDataSummaryRecycler(final Context context , final RecyclerView recyclerView){
+    public void getDataSummaryRecycler(final Context context , final RecyclerView recyclerView, final SearchView searchView){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(url_api)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -90,11 +93,26 @@ public class CovidParam {
             public void onResponse(Call<SummaryCovid> call, Response<SummaryCovid> response) {
                 summaryCovid = response.body();
 
-                Countries[] countries = summaryCovid.getCountries();
+                ArrayList<Countries> countries = summaryCovid.getCountries();
 
                 countrieAdapter = new CountrieAdapter(context,countries);
 
                 recyclerView.setAdapter(countrieAdapter);
+
+
+                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        countrieAdapter.getFilter().filter(newText);
+                        return false;
+                    }
+                });
+
 
             }
 

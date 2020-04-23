@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,7 +19,7 @@ import com.tp.covid2.R;
 import com.tp.covid2.api.CovidParam;
 
 public class DashboardFragment extends Fragment {
-
+    SearchView searchView;
     RecyclerView recyclerView;
     private DashboardViewModel dashboardViewModel;
 
@@ -28,18 +29,20 @@ public class DashboardFragment extends Fragment {
                 ViewModelProviders.of(this).get(DashboardViewModel.class);
         View root = inflater.inflate(R.layout.fragment_dashboard, container, false);
         //final TextView textView = root.findViewById(R.id.text_dashboard);
-
+        searchView = root.findViewById(R.id.search);
         recyclerView = root.findViewById(R.id.listCont);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         CovidParam covidParam = new CovidParam();
-        covidParam.getDataSummaryRecycler(getContext(),recyclerView);
+        covidParam.getDataSummaryRecycler(getContext(),recyclerView,searchView);
+
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
-              //  textView.setText(s);
+                //  textView.setText(s);
             }
         });
+
         return root;
     }
 }
