@@ -2,6 +2,7 @@ package com.tp.covid2.api;
 
 import com.tp.covid2.api.bean.CountriesNames;
 import com.tp.covid2.api.bean.DayOneCovid;
+import com.tp.covid2.api.bean.StateCovidPerCountry;
 import com.tp.covid2.api.bean.SummaryCovid;
 
 import java.util.List;
@@ -17,6 +18,9 @@ public interface CovidApi {
 
     @GET("dayone/country/{country}/status/{status}/live")
     Call<List<DayOneCovid>> getDayOneCovidData(@Path("country") String county,@Path("status") String status);
+
+    @GET("live/country/{countryid}")
+    Call<List<StateCovidPerCountry>> getStateCovidPerDay(@Path("countryid") String country);
 
     @GET("countries")
     Call<List<CountriesNames>> getCountriesName();

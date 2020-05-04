@@ -98,6 +98,9 @@ public class CountrieAdapter extends RecyclerView.Adapter<CountrieAdapter.ViewHo
         TextView num_cases;
         TextView num_death;
         TextView num_recover;
+        TextView num_cases_today;
+        TextView num_death_today;
+        TextView num_recover_today;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             flag_view = itemView.findViewById(R.id.flag_view);
@@ -105,6 +108,9 @@ public class CountrieAdapter extends RecyclerView.Adapter<CountrieAdapter.ViewHo
             num_cases = itemView.findViewById(R.id.num_case);
             num_death=itemView.findViewById(R.id.num_death);
             num_recover=itemView.findViewById(R.id.num_recovered);
+            num_cases_today = itemView.findViewById(R.id.cases_num_today);
+            num_death_today=itemView.findViewById(R.id.death_num_today);
+            num_recover_today=itemView.findViewById(R.id.recovred_num_today);
 
         }
         public void AfficherView(Countries c){
@@ -114,6 +120,9 @@ public class CountrieAdapter extends RecyclerView.Adapter<CountrieAdapter.ViewHo
             num_cases.setText(c.getTotalConfirmed());
             num_death.setText(c.getTotalDeaths());
             num_recover.setText(c.getTotalRecovered());
+            num_cases_today.setText(c.getNewConfirmed());
+            num_death_today.setText(c.getNewDeaths());
+            num_recover_today.setText(c.getNewRecovered());
         }
     }
 }

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tp.covid2.R;
 import com.tp.covid2.api.CovidParam;
+import com.tp.covid2.api2.lmao.CovidLmoaNinjaV2;
 
 public class DashboardFragment extends Fragment {
     SearchView searchView;
@@ -33,8 +34,12 @@ public class DashboardFragment extends Fragment {
         recyclerView = root.findViewById(R.id.listCont);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        CovidParam covidParam = new CovidParam();
-        covidParam.getDataSummaryRecycler(getContext(),recyclerView,searchView);
+//        CovidParam covidParam = new CovidParam();
+//        covidParam.getDataSummaryRecycler(getContext(),recyclerView,searchView);
+
+        ////call the RecyclerView
+        CovidLmoaNinjaV2 covidLmoaNinjaV2 = new CovidLmoaNinjaV2();
+        covidLmoaNinjaV2.getCovidStateAllCountries(getContext(),recyclerView,searchView);
 
         dashboardViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override

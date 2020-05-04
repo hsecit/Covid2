@@ -78,4 +78,7 @@ public class Global {
     {
         return "[NewRecovered = "+NewRecovered+", NewDeaths = "+NewDeaths+", TotalRecovered = "+TotalRecovered+", TotalConfirmed = "+TotalConfirmed+", NewConfirmed = "+NewConfirmed+", TotalDeaths = "+TotalDeaths+"]";
     }
+
+
+
 }

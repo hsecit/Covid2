@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/show_modal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="2dp">
+    android:layout_marginLeft="18dp"
+    android:layout_marginRight="18dp"
+    android:layout_marginBottom="5dp">
 
     <RelativeLayout
         android:id="@+id/show_modal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        tools:ignore="DuplicateIds">
 
         <ImageView
             android:id="@+id/flag_view"
-            android:layout_width="wrap_content"
+            android:layout_width="60dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="10dp"
@@ -28,36 +34,94 @@
 
 
             android:text="Morocco"
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@id/sectionglobal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/nom"
+            android:layout_toEndOf="@+id/flag_view"
+            android:layout_toRightOf="@+id/flag_view"
+            android:text="Global Status"
+            android:textSize="15dp"
             android:textStyle="bold" />
 
         <TextView
             android:id="@+id/num_case"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nom"
+            android:layout_below="@+id/sectionglobal"
             android:layout_marginRight="15dp"
             android:layout_toEndOf="@+id/flag_view"
             android:layout_toRightOf="@+id/flag_view"
-            android:text="47467" />
+            android:text="47467"
+            android:textColor="#FB8C00" />
 
         <TextView
             android:id="@+id/num_death"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nom"
+            android:layout_below="@+id/sectionglobal"
             android:layout_marginRight="15dp"
             android:layout_toEndOf="@+id/num_case"
             android:layout_toRightOf="@+id/num_case"
-            android:text="7475447" />
+            android:text="7475447"
+            android:textColor="#E53935" />
 
         <TextView
             android:id="@+id/num_recovered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/nom"
+            android:layout_below="@+id/sectionglobal"
             android:layout_toEndOf="@+id/num_death"
             android:layout_toRightOf="@+id/num_death"
-            android:text="98585" />
+            android:text="98585"
+            android:textColor="#43A047" />
 
+        <TextView
+            android:id="@+id/sectiontoday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/num_case"
+            android:layout_toEndOf="@+id/flag_view"
+            android:layout_toRightOf="@+id/flag_view"
+            android:text="Today Status"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/cases_num_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sectiontoday"
+            android:layout_marginRight="15dp"
+            android:layout_toEndOf="@+id/flag_view"
+            android:layout_toRightOf="@+id/flag_view"
+            android:text="54today"
+            android:textColor="#FB8C00" />
+
+        <TextView
+            android:id="@+id/death_num_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sectiontoday"
+            android:layout_marginRight="15dp"
+            android:layout_toEndOf="@+id/cases_num_today"
+            android:layout_toRightOf="@+id/cases_num_today"
+            android:text="67today"
+            android:textColor="#E53935" />
+
+        <TextView
+            android:id="@+id/recovred_num_today"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sectiontoday"
+            android:layout_marginRight="15dp"
+            android:layout_toEndOf="@+id/death_num_today"
+            android:layout_toRightOf="@+id/death_num_today"
+            android:text="67today"
+            android:textColor="#43A047" />
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
